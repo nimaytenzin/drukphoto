@@ -206,7 +206,7 @@ export default function Home() {
                 <img
                   src={selectedPhoto.src}
                   alt={selectedPhoto.title}
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-contain"
                 />
               </div>
 

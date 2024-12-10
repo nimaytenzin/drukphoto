@@ -13,7 +13,7 @@ import {
 import Navbar from "@/components/custom/navbar";
 import Header from "@/components/custom/header";
 import { photos } from "./photos";
-import { Award, ShoppingBag } from "lucide-react";
+import { ShoppingBag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Toaster } from "@/components/ui/toaster";
 import { useToast } from "@/hooks/use-toast";

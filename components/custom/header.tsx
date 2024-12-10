@@ -5,7 +5,7 @@ const Header = () => {
     <div
       className="relative flex flex-col justify-center items-center gap-4"
       style={{
-        height: "50vh",
+        height: "40vh",
         backgroundImage: "url('12.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
@@ -54,13 +54,13 @@ const Header = () => {
         />
         <div className="flex gap-2">
           <p className="py-1 bg-opacity-20 px-2 bg-white text-white rounded-md">
-            Background
+            Architecture
           </p>
           <p className="py-1 bg-opacity-20 px-2 bg-white text-white rounded-md">
-            Nature
+            Landscape
           </p>
           <p className="py-1 bg-opacity-20 px-2 bg-white text-white rounded-md">
-            Mountains
+            Potraits
           </p>
         </div>
       </div>

@@ -13,7 +13,7 @@ import {
 import Navbar from "@/components/custom/navbar";
 import Header from "@/components/custom/header";
 import { photos } from "./photos";
-import { ShoppingBag } from "lucide-react";
+import { Award, ShoppingBag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Toaster } from "@/components/ui/toaster";
 import { useToast } from "@/hooks/use-toast";
@@ -161,7 +161,12 @@ export default function Home() {
         <div className="flex justify-end my-8">
           <Tabs defaultValue="account" className="w-[400px]">
             <TabsList>
-              <TabsTrigger value="editorsChoice">Editors Choice</TabsTrigger>
+              <TabsTrigger
+                value="editorsChoice"
+                className="bg-[#FF8A5C] text-white"
+              >
+                Editors Choice
+              </TabsTrigger>
               <TabsTrigger value="popular">Popular</TabsTrigger>
               <TabsTrigger value="mostSold">Most Sold</TabsTrigger>
             </TabsList>
@@ -181,12 +186,26 @@ export default function Home() {
                 className="relative group cursor-pointer"
                 onClick={() => handlePhotoClick(item)}
               >
+                {item.editorChoice && (
+                  <div className="absolute top-2 left-2  opacity-0 group-hover:opacity-100 transition-opacity duration-100">
+                    <svg
+                      version="1.1"
+                      id="Icons"
+                      className="h-6 text-[#FCF9EA] fill-current "
+                      viewBox="0 0 32 32"
+                    >
+                      <g>
+                        <path d="M16,20c4.4,0,8-3.6,8-8s-3.6-8-8-8s-8,3.6-8,8S11.6,20,16,20z" />
+                        <path d="M29.4,26.1l-3.5-7.3c1.3-1.9,2.1-4.3,2.1-6.8c0-6.6-5.4-12-12-12S4,5.4,4,12c0,2.6,0.8,4.9,2.2,6.9l-3.4,7.2   c-0.1,0.3-0.1,0.7,0,0.9s0.5,0.5,0.8,0.5l4.7,0.3l3.2,3.5c0.2,0.2,0.5,0.3,0.7,0.3c0,0,0.1,0,0.2,0c0.3,0,0.6-0.3,0.8-0.6l2.9-6   l2.9,6c0.1,0.3,0.4,0.5,0.8,0.6c0,0,0.1,0,0.2,0c0.3,0,0.5-0.1,0.7-0.3l3.2-3.5l4.7-0.3c0.3,0,0.6-0.2,0.8-0.5S29.5,26.4,29.4,26.1   z M16,2c5.5,0,10,4.5,10,10c0,5.5-4.5,10-10,10S6,17.5,6,12C6,6.5,10.5,2,16,2z" />
+                      </g>
+                    </svg>
+                  </div>
+                )}{" "}
                 <img
                   src={item.src}
                   alt={item.title}
                   style={{ width: "100%", height: "auto" }}
                 />
-
                 {/* Title and Author */}
                 <div className="absolute bottom-4 left-0 bg-black bg-opacity-20 text-white text-sm flex justify-between w-full px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-100">
                   <p className="text-sm">{item.title}</p>
@@ -200,42 +219,48 @@ export default function Home() {
       {selectedPhoto && (
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogContent className="max-w-4xl w-full p-0">
-            <div className="flex h-[80vh]">
+            <div className="flex flex-col">
               {/* Left: Photo */}
-              <div className="w-2/3 bg-black flex items-center justify-center">
+              <div className="w-full bg-black rounded-md flex items-center justify-center  h-[70vh]">
                 <img
                   src={selectedPhoto.src}
                   alt={selectedPhoto.title}
-                  className="h-full w-full object-contain"
+                  className="h-full w-full object-contain rounded-lg"
                 />
               </div>
 
-              <div className="w-1/3 p-6 flex flex-col justify-between">
-                <DialogHeader>
-                  <DialogTitle className="text-lg font-semibold">
-                    {selectedPhoto.title}
-                  </DialogTitle>
-                  <p className="text-sm text-gray-500 mb-4">
-                    By {selectedPhoto.author}
+              <div className="w-full p-6 gap-8 flex justify-between">
+                <div>
+                  <DialogHeader>
+                    <DialogTitle className="text-lg font-semibold">
+                      {selectedPhoto.title}
+                    </DialogTitle>
+                    <p className="text-sm text-gray-500 mb-4">
+                      By {selectedPhoto.author}
+                    </p>
+                  </DialogHeader>
+
+                  <p className="text-sm text-justify">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                    Qui, expedita illo. Cumque ipsum ratione ab placeat itaque!
+                    Vitae, facilis itaque.
                   </p>
-                </DialogHeader>
-
-                <div className="flex-grow overflow-y-auto mt-4">
-                  <div className="mb-4">
-                    <div className="flex flex-wrap gap-2">
-                      <span className="px-3 py-1 bg-gray-200 text-gray-600 rounded-full text-sm">
-                        Landscape
-                      </span>
-                      <span className="px-3 py-1 bg-gray-200 text-gray-600 rounded-full text-sm">
-                        Dzongs
-                      </span>
-                      <span className="px-3 py-1 bg-gray-200 text-gray-600 rounded-full text-sm">
-                        Paro
-                      </span>
+                  <div className="flex-grow overflow-y-auto mt-4">
+                    <div className="mb-4">
+                      <div className="flex flex-wrap gap-2">
+                        <span className="px-3 py-1 bg-gray-200 text-gray-600 rounded-full text-sm">
+                          Landscape
+                        </span>
+                        <span className="px-3 py-1 bg-gray-200 text-gray-600 rounded-full text-sm">
+                          Dzongs
+                        </span>
+                        <span className="px-3 py-1 bg-gray-200 text-gray-600 rounded-full text-sm">
+                          Paro
+                        </span>
+                      </div>
                     </div>
-                  </div>
 
-                  <p className="text-gray-700 text-sm">
+                    {/* <p className="text-gray-700 text-sm">
                     <strong>License and Usage Terms for this Photo</strong>
                     <br />
                     <br />
@@ -286,10 +311,11 @@ export default function Home() {
                     exclusive usage, please contact us at
                     <strong>support@drukphoto.com</strong> for an extended
                     license.
-                  </p>
+                  </p> */}
+                  </div>
                 </div>
 
-                <div className="mt-4 flex items-center justify-between">
+                <div className="mt-4 flex flex-col justify-end items-end gap-2 ">
                   <p className="text-xl font-semibold text-gray-800">Nu. 250</p>
                   {cartItems.find(
                     (item) => item.title === selectedPhoto?.title
